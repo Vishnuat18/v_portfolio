@@ -28,6 +28,7 @@
 
   <title>Vishnu R | Java Full Stack Developer Portfolio</title>
   <link rel="shortcut icon" href="imgs/vl.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
     :root {
@@ -235,7 +236,6 @@
       align-items: center;
       gap: 32px;
       position: relative;
-      margin-top: 28px;
     }
 
     #intro .intro-panel {
@@ -722,6 +722,201 @@
       transform: scale(1.06);
     }
   </style>
+
+  <style>
+    /* ===== Restore Old Intro Layout ===== */
+
+    #intro {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 32px;
+      align-items: center;
+    }
+
+    /* Left content */
+    .intro-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Image card stays on right */
+    .intro-image-card {
+      width: 340px;
+      height: 380px;
+      justify-self: end;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 240, 224, 0.06);
+    }
+
+    .intro-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Mobile behavior – same as old design */
+    @media (max-width: 880px) {
+      #intro {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-image-card {
+        order: -1;
+        width: 100%;
+        height: 260px;
+      }
+    }
+
+    /* ===== Intro Social Icons ===== */
+
+    .intro-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .intro-socials {
+      display: flex;
+      gap: 14px;
+    }
+
+    .social {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+
+      color: #9aa0a6;
+      /* neutral default */
+      font-size: 18px;
+
+      transition: all 0.25s ease;
+    }
+
+    .social:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    /* Real brand colors on hover */
+    .social.whatsapp:hover {
+      color: #25D366;
+      box-shadow: 0 0 18px rgba(37, 211, 102, 0.35);
+    }
+
+    .social.linkedin:hover {
+      color: #0A66C2;
+      box-shadow: 0 0 18px rgba(10, 102, 194, 0.35);
+    }
+
+    .social.github:hover {
+      color: #ffffff;
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+    }
+
+    /* ===== HERO SPACING FIX (ONLY INTRO) ===== */
+
+    #intro.section {
+      padding-top: 24px;
+      /* reduce from 64px */
+    }
+
+    #intro {
+      margin-top: 0;
+      /* remove extra gap */
+    }
+
+    /* Ensure header + hero feel connected */
+    header {
+      margin-bottom: 0;
+    }
+
+    /* ===== Tooltips ===== */
+
+    .social {
+      position: relative;
+    }
+
+    .social::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000;
+      color: #c9fff7;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .social:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(4px);
+    }
+
+    /* ===== Resume Button ===== */
+
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .resume-btn i {
+      font-size: 14px;
+    }
+
+    /* Tooltip reuse */
+    .resume-btn::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000;
+      color: #c9fff7;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .resume-btn:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(4px);
+    }
+
+    .social:focus-visible,
+    .resume-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ===== HARD INTRO SPACING RESET ===== */
+
+    #intro.section {
+      padding-top: 16px !important;
+      padding-bottom: 16px !important;
+      margin-top: 0 !important;
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -767,7 +962,7 @@
       <div class="brand">
         <div class="logo"><img src="imgs/vl.png" alt=""></div>
         <div>
-          <div style="font-weight:800">Vishnu</div>
+          <div style="font-weight:800">Vishnu R</div>
           <div style="font-size:12px; color:var(--muted)">Engineering Student | Aspiring Java Full Stack Developer
           </div>
         </div>
@@ -781,368 +976,395 @@
         <a href="#contact">Contact</a>
       </nav>
     </header>
-
+    
     <!-- INTRO -->
     <section id="intro" class="section" aria-labelledby="intro-title">
-      <div class="intro-panel reveal" id="intro-panel">
-        <h1 id="intro-title">Hello, I am Vishnu</h1>
-        <p>"I build websites, Apps, UI Designing, and explore new technologies to bring ideas to life"</p>
+      <div class="intro-content">
+        <h1 id="intro-title">Hi, Im Vishnu R<br /></h1>
 
+        <p>
+          Passionate about crafting robust and scalable web applications using Java technologies.
+          Eager to contribute my skills and grow in a dynamic development environment.
+        </p>
 
         <div class="meta">
-          <div class="pill">Web - App - Design</div>
-          <div style="color:var(--muted); font-size:13px;">Available for collaboration</div>
-        </div>
-      </div>
-
-      <div class="intro-image-card reveal" id="intro-image">
-        <img src="imgs/v.png" class="intro-image" alt="Vishnu portrait">
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section" aria-labelledby="skills-title">
-      <div style="width:100%">
-        <div class="section-header">
-          <h2 id="skills-title">Skills</h2>
-          <div class="muted">Technologies I work with</div>
+          <div class="pill">Location: India</div>
+          <div class="pill">Education: RPSIT</div>
         </div>
 
-        <!-- FRONTEND -->
-        <h3 class="skill-category">Frontend</h3>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/html.png" alt="HTML"></div>
-            <div class="skill-info">
-              <h4>HTML</h4>
-              <p class="muted">Structured and semantic web pages.</p>
-            </div>
+        <div class="intro-actions">
+          <div class="intro-socials">
+            <a href="https://wa.me/916379000598" target="_blank" class="social whatsapp" data-tooltip="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/vishnu-r-a41884300" target="_blank" class="social linkedin"
+              data-tooltip="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://github.com/Vishnuat18" target="_blank" class="social github" data-tooltip="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+
           </div>
-
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/css.png" alt="CSS"></div>
-            <div class="skill-info">
-              <h4>CSS & Animations</h4>
-              <p class="muted">Responsive layouts and transitions.</p>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/js.png" alt="JavaScript"></div>
-            <div class="skill-info">
-              <h4>JavaScript</h4>
-              <p class="muted">Interactive and dynamic web apps.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- BACKEND -->
-        <h3 class="skill-category">Backend</h3>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/java.png" alt="Java"></div>
-            <div class="skill-info">
-              <h4>Java</h4>
-              <p class="muted">Object-oriented programming.</p>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/springboot.png" alt="Spring Boot"></div>
-            <div class="skill-info">
-              <h4>Spring Boot</h4>
-              <p class="muted">REST APIs and backend services.</p>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/spring-security.png" alt="Spring Security"></div>
-            <div class="skill-info">
-              <h4>Spring Security</h4>
-              <p class="muted">Authentication, authorization, JWT.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- DATABASES -->
-        <h3 class="skill-category">Databases</h3>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/mysql.png" alt="MySQL"></div>
-            <div class="skill-info">
-              <h4>MySQL</h4>
-              <p class="muted">Relational database design.</p>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/mongodb.png" alt="MongoDB"></div>
-            <div class="skill-info">
-              <h4>MongoDB</h4>
-              <p class="muted">NoSQL document-based database.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- TOOLS -->
-        <h3 class="skill-category">Tools & Build</h3>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/github.png" alt="Git"></div>
-            <div class="skill-info">
-              <h4>Git & GitHub</h4>
-              <p class="muted">Version control and collaboration.</p>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-img"><img src="imgs/maven.jpg" alt="Maven"></div>
-            <div class="skill-info">
-              <h4>Maven</h4>
-              <p class="muted">Dependency and build management.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section" aria-labelledby="projects-title">
-      <div style="width:100%">
-        <div class="section-header">
-          <h2 id="projects-title">Projects</h2>
-          <div class="muted">Demos and Links of my creation</div>
-        </div>
-
-        <div class="projects-grid" id="projects-grid">
-          <!-- Project 1 -->
-          <article class="project reveal" aria-labelledby="p1">
-            <div class="project-media">
-              <img src="imgs/ecom.png" alt="Project 1 image" loading="lazy" decoding="async">
-            </div>
-            <div class="project-body">
-              <h3 id="p1">E-commerce Website</h3>
-              <p class="muted">Built a simple online shooping layout for products with modern UI design
-                and
-                user-friendly</p>
-              <div class="project-links">
-                <a class="btn" href="https://vishnuat18.github.io/E-commerce_site/" target="_blank" rel="noopener">Live
-                  Demo</a>
-                <a class="btn secondary" href="https://github.com/Vishnuat18/E-commerce_react/" target="_blank"
-                  rel="noopener">GitHub</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="project reveal" aria-labelledby="p2">
-            <div class="project-media">
-              <img src="imgs/sync.png" alt="Project 2 image" loading="lazy" decoding="async">
-            </div>
-            <div class="project-body">
-              <h3 id="p2">Smar Home Automation</h3>
-              <p class="muted">A Smart home automation system developed a web-based control for seamless
-                automation.</p>
-              <div class="project-links">
-                <a class="btn" href="https://vishnuat18.github.io/web-smart_Automation/" target="_blank"
-                  rel="noopener">Live Demo</a>
-                <a class="btn secondary" href="https://github.com/Vishnuat18/web-smart_Automation/" target="_blank"
-                  rel="noopener">GitHub</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="project reveal" aria-labelledby="p-chit">
-            <div class="project-media">
-              <!-- FIXED: use web path, not local system path -->
-              <img src="imgs/chit.png" alt="Chit Fund Management System Project" loading="lazy" decoding="async">
-            </div>
-
-            <div class="project-body">
-              <h3 id="p-chit">Chit Fund Management System</h3>
-
-              <p class="muted">
-                A secure web application designed to manage chit fund members, weekly payments,
-                and reports with admin-only access.
-              </p>
-
-              <div class="project-links">
-                <!-- Live Demo Button -->
-                <a class="btn" href="javascript:void(0)" onclick="openAuthPopup()">
-                  Live Demo
-                </a>
-
-                <!-- GitHub Repo -->
-                <a class="btn secondary" href="https://github.com/Vishnuat18/SskChitFrontend/" target="_blank"
-                  rel="noopener">
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <div id="authPopup" class="popup-overlay">
-            <div class="popup-box">
-              <h3>Restricted Access</h3>
-              <p style="color: #00f0e0;">
-                This website accessible only to authorized users.
-                You may review the complete frontend implementation via GitHub.
-              </p>
-
-              <div class="popup-actions">
-                <a href="https://github.com/Vishnuat18/SskChitFrontend/" target="_blank" class="btn secondary">
-                  View GitHub Repository
-                </a>
-                <button class="btn" onclick="closeAuthPopup()">Close</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <article class="project reveal" aria-labelledby="p3">
-            <div class="project-media">
-              <img src="imgs/sms.png" alt="Project 3 image" loading="lazy" decoding="async">
-            </div>
-            <div class="project-body">
-              <h3 id="p3">Student Management System</h3>
-              <p class="muted">This is a Student Management System for handling Student details, records,
-                courses and performance seamlessly.</p>
-              <div class="project-links">
-                <a class="btn" href="https://vishnuat18.github.io/SMS/" target="_blank" rel="noopener">Live Demo</a>
-                <a class="btn secondary" href="https://github.com/Vishnuat18/SMS/" target="_blank"
-                  rel="noopener">GitHub</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 4-->
-          <article class="project reveal" aria-labelledby="p3">
-            <div class="project-media fallback">
-              <h3>Artomatic Application</h3>
-            </div>
-            <div class="project-body">
-              <h3 id="p3">Artomatic Application</h3>
-              <p class="muted">It is a software embedded Application for Rangoli Robot which the design
-                are available in the app that sends to robot to draw and seamless working.</p>
-              <div class="project-links">
-                <a class="btn" href="https://github.com/Vishnuat18/raro" target="_blank" rel="noopener">Live Demo</a>
-                <a class="btn secondary" href="https://github.com/Vishnuat18/raro" target="_blank"
-                  rel="noopener">GitHub</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project: RPSIT Rally -->
-          <article class="project reveal" aria-labelledby="p-rpsit">
-            <div class="project-media fallback">
-              <h3>RPSIT Rally</h3>
-            </div>
-
-            <div class="project-body">
-              <h3 id="p-rpsit">RPSIT Rally</h3>
-
-              <p class="muted">
-                A fast-paced Ping Pong game developed using JavaScript with smooth paddle controls,
-                real-time ball physics, and interactive gameplay mechanics.
-              </p>
-
-              <div class="project-links">
-                <a class="btn" href="https://ping-pong-gamee.netlify.app/" target="_blank" rel="noopener">
-                  Live Demo
-                </a>
-
-                <a class="btn secondary" href="https://github.com/Vishnuat18/ping_pong/" target="_blank" rel="noopener">
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- Profiles -->
-    <section id="profile" aria-labelledby="profile-title">
-      <div class="section-header">
-        <h2 id="profile-title">Profiles</h2>
-        <div class="muted">Connect with me on professional networks</div>
-      </div>
-      <div class="profiles-container reveal">
-        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark"
-          data-type="HORIZONTAL" data-vanity="vishnu-r-a41884300" data-version="v1"><a
-            class="badge-base__link LI-simple-link"
-            href="https://in.linkedin.com/in/vishnu-r-a41884300?trk=profile-badge">
+          <a href="docs/Vishnu_R_CV.pdf" download class="btn resume-btn" data-tooltip="Download Resume (PDF)">
+            <i class="fa-solid fa-download"></i>
+            Download Resume
           </a>
         </div>
+      </div>
 
-
-        <!-- GitHub Profile Card -->
-        <picture>
-          <source
-            srcset="https://github-readme-stats.vercel.app/api?username=Vishnuat18&show_icons=true&rank_icon=github&theme=dark&hide_border=true"
-            media="(prefers-color-scheme: dark)" />
-          <source
-            srcset="https://github-readme-stats.vercel.app/api?username=Vishnuat18&show_icons=true&rank_icon=github&theme=transparent&hide_border=true"
-            media="(prefers-color-scheme: light)" />
-          <img
-            src="https://github-readme-stats.vercel.app/api?username=Vishnuat18&show_icons=true&rank_icon=github&hide_border=true"
-            alt="Vishnu GitHub Stats" />
-        </picture>
-
-
+      <!-- RIGHT SIDE IMAGE (same as old design) -->
+      <div class="intro-image-card">
+        <img src="imgs/v.png" alt="Vishnu R Profile Picture" class="intro-image">
       </div>
     </section>
+  </div>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section" aria-labelledby="contact-title">
-      <div style="width:100%;">
-        <div class="section-header">
-          <h2 id="contact-title">Work with Me</h2>
-          <div class="muted">Let's build something together</div>
+  <!-- SKILLS -->
+  <section id="skills" class="section" aria-labelledby="skills-title">
+    <div style="width:100%">
+      <div class="section-header">
+        <h2 id="skills-title">Skills</h2>
+        <div class="muted">Technologies I work with</div>
+      </div>
+
+      <!-- FRONTEND -->
+      <h3 class="skill-category">Frontend</h3>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/html.png" alt="HTML"></div>
+          <div class="skill-info">
+            <h4>HTML</h4>
+            <p class="muted">Structured and semantic web pages.</p>
+          </div>
         </div>
 
-        <div class="contact-wrap reveal">
-          <div class="contact-left">
-            <h3 style="margin-top:0;">Contact Me</h3>
-            <p class="muted">If you'd like to collaborate on a project, an idea, drop a message — I usually
-              reply within
-              a day.</p>
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/css.png" alt="CSS"></div>
+          <div class="skill-info">
+            <h4>CSS & Animations</h4>
+            <p class="muted">Responsive layouts and transitions.</p>
+          </div>
+        </div>
 
-            <div style="margin-top:18px; display:grid; grid-template-columns: repeat(2,1fr); gap:12px;">
-              <div
-                style="background:var(--panel); border-radius:10px; padding:12px; border:1px solid rgba(255,255,255,0.02);">
-                <div style="font-weight:700">Email</div>
-                <div class="muted" style="font-size:13px">vishnurajan24766@example.com</div>
-              </div>
-              <div
-                style="background:var(--panel); border-radius:10px; padding:12px; border:1px solid rgba(255,255,255,0.02);">
-                <div style="font-weight:700">Location</div>
-                <div class="muted" style="font-size:13px">India</div>
-              </div>
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/js.png" alt="JavaScript"></div>
+          <div class="skill-info">
+            <h4>JavaScript</h4>
+            <p class="muted">Interactive and dynamic web apps.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BACKEND -->
+      <h3 class="skill-category">Backend</h3>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/java.png" alt="Java"></div>
+          <div class="skill-info">
+            <h4>Java</h4>
+            <p class="muted">Object-oriented programming.</p>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/springboot.png" alt="Spring Boot"></div>
+          <div class="skill-info">
+            <h4>Spring Boot</h4>
+            <p class="muted">REST APIs and backend services.</p>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/spring-security.png" alt="Spring Security"></div>
+          <div class="skill-info">
+            <h4>Spring Security</h4>
+            <p class="muted">Authentication, authorization, JWT.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATABASES -->
+      <h3 class="skill-category">Databases</h3>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/mysql.png" alt="MySQL"></div>
+          <div class="skill-info">
+            <h4>MySQL</h4>
+            <p class="muted">Relational database design.</p>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/mongodb.png" alt="MongoDB"></div>
+          <div class="skill-info">
+            <h4>MongoDB</h4>
+            <p class="muted">NoSQL document-based database.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOLS -->
+      <h3 class="skill-category">Tools & Build</h3>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/github.png" alt="Git"></div>
+          <div class="skill-info">
+            <h4>Git & GitHub</h4>
+            <p class="muted">Version control and collaboration.</p>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-img"><img src="imgs/maven.jpg" alt="Maven"></div>
+          <div class="skill-info">
+            <h4>Maven</h4>
+            <p class="muted">Dependency and build management.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section" aria-labelledby="projects-title">
+    <div style="width:100%">
+      <div class="section-header">
+        <h2 id="projects-title">Projects</h2>
+        <div class="muted">Demos and Links of my creation</div>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Project 1 -->
+        <article class="project reveal" aria-labelledby="p1">
+          <div class="project-media">
+            <img src="imgs/ecom.png" alt="Project 1 image" loading="lazy" decoding="async">
+          </div>
+          <div class="project-body">
+            <h3 id="p1">E-commerce Website</h3>
+            <p class="muted">Built a simple online shooping layout for products with modern UI design
+              and
+              user-friendly</p>
+            <div class="project-links">
+              <a class="btn" href="https://vishnuat18.github.io/E-commerce_site/" target="_blank" rel="noopener">Live
+                Demo</a>
+              <a class="btn secondary" href="https://github.com/Vishnuat18/E-commerce_react/" target="_blank"
+                rel="noopener">GitHub</a>
             </div>
           </div>
+        </article>
 
-          <div class="contact-right">
-            <form id="contactForm" aria-label="Contact form">
-              <input type="text" name="name" placeholder="Your Name" required />
-              <input type="email" name="email" placeholder="Your Email" required />
-              <textarea name="message" placeholder="Tell me about your project..." rows="6" required></textarea>
-              <button type="submit" class="btn">Send Message</button>
-            </form>
+        <!-- Project 2 -->
+        <article class="project reveal" aria-labelledby="p2">
+          <div class="project-media">
+            <img src="imgs/sync.png" alt="Project 2 image" loading="lazy" decoding="async">
+          </div>
+          <div class="project-body">
+            <h3 id="p2">Smar Home Automation</h3>
+            <p class="muted">A Smart home automation system developed a web-based control for seamless
+              automation.</p>
+            <div class="project-links">
+              <a class="btn" href="https://vishnuat18.github.io/web-smart_Automation/" target="_blank"
+                rel="noopener">Live Demo</a>
+              <a class="btn secondary" href="https://github.com/Vishnuat18/web-smart_Automation/" target="_blank"
+                rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project reveal" aria-labelledby="p-chit">
+          <div class="project-media">
+            <!-- FIXED: use web path, not local system path -->
+            <img src="imgs/chit.png" alt="Chit Fund Management System Project" loading="lazy" decoding="async">
+          </div>
+
+          <div class="project-body">
+            <h3 id="p-chit">Chit Fund Management System</h3>
+
+            <p class="muted">
+              A secure web application designed to manage chit fund members, weekly payments,
+              and reports with admin-only access.
+            </p>
+
+            <div class="project-links">
+              <!-- Live Demo Button -->
+              <a class="btn" href="javascript:void(0)" onclick="openAuthPopup()">
+                Live Demo
+              </a>
+
+              <!-- GitHub Repo -->
+              <a class="btn secondary" href="https://github.com/Vishnuat18/SskChitFrontend/" target="_blank"
+                rel="noopener">
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div id="authPopup" class="popup-overlay">
+          <div class="popup-box">
+            <h3>Restricted Access</h3>
+            <p style="color: #00f0e0;">
+              This website accessible only to authorized users.
+              You may review the complete frontend implementation via GitHub.
+            </p>
+
+            <div class="popup-actions">
+              <a href="https://github.com/Vishnuat18/SskChitFrontend/" target="_blank" class="btn secondary">
+                View GitHub Repository
+              </a>
+              <button class="btn" onclick="closeAuthPopup()">Close</button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <footer>
-      <div class="muted">
-        Vishnu R | Java Full Stack Developer | RPSIT @ 2024
+        <!-- Project 3 -->
+        <article class="project reveal" aria-labelledby="p3">
+          <div class="project-media">
+            <img src="imgs/sms.png" alt="Project 3 image" loading="lazy" decoding="async">
+          </div>
+          <div class="project-body">
+            <h3 id="p3">Student Management System</h3>
+            <p class="muted">This is a Student Management System for handling Student details, records,
+              courses and performance seamlessly.</p>
+            <div class="project-links">
+              <a class="btn" href="https://vishnuat18.github.io/SMS/" target="_blank" rel="noopener">Live Demo</a>
+              <a class="btn secondary" href="https://github.com/Vishnuat18/SMS/" target="_blank"
+                rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4-->
+        <article class="project reveal" aria-labelledby="p3">
+          <div class="project-media fallback">
+            <h3>Artomatic Application</h3>
+          </div>
+          <div class="project-body">
+            <h3 id="p3">Artomatic Application</h3>
+            <p class="muted">It is a software embedded Application for Rangoli Robot which the design
+              are available in the app that sends to robot to draw and seamless working.</p>
+            <div class="project-links">
+              <a class="btn" href="https://github.com/Vishnuat18/raro" target="_blank" rel="noopener">Live Demo</a>
+              <a class="btn secondary" href="https://github.com/Vishnuat18/raro" target="_blank"
+                rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project: RPSIT Rally -->
+        <article class="project reveal" aria-labelledby="p-rpsit">
+          <div class="project-media fallback">
+            <h3>RPSIT Rally</h3>
+          </div>
+
+          <div class="project-body">
+            <h3 id="p-rpsit">RPSIT Rally</h3>
+
+            <p class="muted">
+              A fast-paced Ping Pong game developed using JavaScript with smooth paddle controls,
+              real-time ball physics, and interactive gameplay mechanics.
+            </p>
+
+            <div class="project-links">
+              <a class="btn" href="https://ping-pong-gamee.netlify.app/" target="_blank" rel="noopener">
+                Live Demo
+              </a>
+
+              <a class="btn secondary" href="https://github.com/Vishnuat18/ping_pong/" target="_blank" rel="noopener">
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
       </div>
-    </footer>
+    </div>
+  </section>
+
+
+
+  <!-- Profiles -->
+  <section id="profile" aria-labelledby="profile-title">
+    <div class="section-header">
+      <h2 id="profile-title">Profiles</h2>
+      <div class="muted">Connect with me on professional networks</div>
+    </div>
+    <div class="profiles-container reveal">
+      <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark"
+        data-type="HORIZONTAL" data-vanity="vishnu-r-a41884300" data-version="v1"><a
+          class="badge-base__link LI-simple-link"
+          href="https://in.linkedin.com/in/vishnu-r-a41884300?trk=profile-badge">
+        </a>
+      </div>
+
+
+      <!-- GitHub Profile Card -->
+      <picture>
+        <source
+          srcset="https://github-readme-stats.vercel.app/api?username=Vishnuat18&show_icons=true&rank_icon=github&theme=dark&hide_border=true"
+          media="(prefers-color-scheme: dark)" />
+        <source
+          srcset="https://github-readme-stats.vercel.app/api?username=Vishnuat18&show_icons=true&rank_icon=github&theme=transparent&hide_border=true"
+          media="(prefers-color-scheme: light)" />
+        <img
+          src="https://github-readme-stats.vercel.app/api?username=Vishnuat18&show_icons=true&rank_icon=github&hide_border=true"
+          alt="Vishnu GitHub Stats" />
+      </picture>
+
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section" aria-labelledby="contact-title">
+    <div style="width:100%;">
+      <div class="section-header">
+        <h2 id="contact-title">Work with Me</h2>
+        <div class="muted">Let's build something together</div>
+      </div>
+
+      <div class="contact-wrap reveal">
+        <div class="contact-left">
+          <h3 style="margin-top:0;">Contact Me</h3>
+          <p class="muted">If you'd like to collaborate on a project, an idea, drop a message — I usually
+            reply within
+            a day.</p>
+
+          <div style="margin-top:18px; display:grid; grid-template-columns: repeat(2,1fr); gap:12px;">
+            <div
+              style="background:var(--panel); border-radius:10px; padding:12px; border:1px solid rgba(255,255,255,0.02);">
+              <div style="font-weight:700">Email</div>
+              <div class="muted" style="font-size:13px">vishnurajan24766@example.com</div>
+            </div>
+            <div
+              style="background:var(--panel); border-radius:10px; padding:12px; border:1px solid rgba(255,255,255,0.02);">
+              <div style="font-weight:700">Location</div>
+              <div class="muted" style="font-size:13px">India</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <form id="contactForm" aria-label="Contact form">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="Tell me about your project..." rows="6" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="muted">
+      Vishnu R | Java Full Stack Developer | RPSIT @ 2024
+    </div>
+  </footer>
 
   </div>
 
