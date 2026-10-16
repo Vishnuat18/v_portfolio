@@ -1,4 +1,4 @@
-git // Lanyard 3D Physics Simulation Component
+// Lanyard 3D Physics Simulation Component
 // Standalone Three.js implementation (React Bits Lanyard)
 
 (function(window) {
